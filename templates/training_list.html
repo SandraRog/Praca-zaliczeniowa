@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Welcome {{ user }}!</h1>
+          <h2>Training schedule:</h2>
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col" class="col-1">Horse name</th>
+      <th scope="col" class="col-1">Date</th>
+        <th scope="col" class="col-1">Place</th>
+    </tr>
+  </thead>
+    <tbody>
+            {%  for training in trainingschedule %}
+                <tr>
+                    <td class="col-2">
+                {{ training.horse.name }}
+                    </td>
+                <td class="col-2">
+            {{ training.date }}
+                </td>
+                <td class="col-2">
+                {{ training.place}}
+                </td>
+                    <td class="col-1">
+        <a href="/stable_schedule/horse/training_schedule/{{ training.id }}/delete/">Delete</a>
+                    </td>
+                    <td class="col-1">
+        <a href="/stable_schedule/horse/training_schedule/{{ training.id }}/modify/">Modify</a>
+                    </td>
+                </tr>
+            {% endfor %}
+    </tbody>
+    </table>
+
+<a href="/stable_schedule/horse/list/">Horse list</a>
+
+{% endblock %}

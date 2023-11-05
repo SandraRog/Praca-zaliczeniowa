@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Welcome {{ user }}!</h1>
+    <p><button class="btn btn-color rounded-0 mt-4 pl-4 pr-4">
+                <a href="/stable_schedule/horse/competitions/add_horse/">Add horse to competition</a>
+            </button>
+                <button class="btn btn-color rounded-0 mt-4 pl-4 pr-4">
+                <a href="/stable_schedule/horse/competitions/list/">Competitions list</a>
+            </button>
+    </p>
+    <table class="table">
+    <thead>
+    <tr>
+      <th scope="col" class="col-2">Horse name</th>
+      <th scope="col" class="col-1">Competition place</th>
+      <th scope="col" class="col-1">Score</th>
+    </tr>
+  </thead>
+    <tbody>
+    {%  for horsecompetition in horsecompetitions %}
+    <tr>
+      <td class="col-2">
+          {{ horsecompetition.horse.name }}<br>
+      </td>
+        <td class="col-2"> {{ horsecompetition.competition.place }}
+        </td>
+        <td class="col-2">{{ horsecompetition.score }}
+        </td>
+
+    </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+
+{#            {%  for horsecompetition in horsecompetitions %}#}
+{#                <p>Horse name: {{ horsecompetition.horse.name }}</p>#}
+{#                <p> Competitions place: {{ horsecompetition.competition.place }}</p>#}
+{#                <p> Score: {{ horsecompetition.score }}</p>#}
+{#            {% endfor %}#}
+
+{% endblock %}

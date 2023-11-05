@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{#    <h1>Welcome {{ user }}!</h1>#}
+
+    <form method="post">
+        {% csrf_token %}
+        <label>
+            <select name="horse">
+                {%  for horse in horses %}
+                <option value="{{ horse.id }}">
+                    {{ horse.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>
+            <select name="competition">
+                {%  for competition in competitions %}
+                <option value="{{ competition.id }}">
+                    {{ competition.place }}  {{ competition.date }}
+                </option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>
+            <input type="number" name="score" placeholder="score">
+        </label>
+        <button type="submit" class="btn btn-primary">Add your horse</button><br>
+    </form><br>
+{% endblock %}

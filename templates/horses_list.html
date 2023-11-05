@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- table -->
+        <p>
+            <button class="btn btn-color rounded-0 mt-4 pl-4 pr-4">
+                <a href="/stable_schedule/horse/feeding/list/">Your horses food/modify</a>
+            </button>
+            <button class="btn btn-color rounded-0 mt-4 pl-4 pr-4">
+                <a href="/stable_schedule/horse/health/list/">Your horses health/modify</a>
+            </button>
+            <button class="btn btn-color rounded-0 mt-4 pl-4 pr-4">
+                <a href="/stable_schedule/horse/training_schedule/list/">Your horses training schedule/modify</a>
+            </button>
+    </p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="col-2">Horse name</th>
+      <th scope="col" class="col-1">Horse age</th>
+      <th scope="col" class="col-1">Pedigree</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for horse in horses %}
+    <tr>
+      <td class="col-2">
+          {{ horse.name }}<br>
+          <a href="/stable_schedule/horse/{{ horse.id }}/">Details</a>
+      </td>
+        <td class="col-2"> {{ horse.age }}
+        </td>
+        <td class="col-2">{{ horse.pedigree }}
+        </td>
+      <td class="col-1">
+        <a href="/stable_schedule/horse/modify/{{ horse.id }}/">Modify</a>
+      </td>
+      <td class="col-1">
+        <a href="/stable_schedule/horse/delete/{{ horse.id }}/">Delete</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<!-- table -->
+
+{% endblock %}

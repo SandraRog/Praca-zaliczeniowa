@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>
+        {{ horse.name }}
+    </h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"> </th>
+      <th scope="col">Information</th>
+      <th scope="col"> </th>
+      <th scope="col"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Age</th>
+      <td>{{ horse.age }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Peedigree</th>
+        <td>{{ horse.pedigree }}</td>
+    </tr>
+        <tr>
+      <th scope="row">Feeding</th>
+        <td>{% for food in horse.horse_feeding.all %}
+        {{ food.time_of_day }}: {{ food.ingredients }}<br>
+            {% endfor %}
+        </td>
+                    <td class="col-1">
+        <a href="/stable_schedule/horse/feeding/{{ horse.id }}">Add</a>
+        </td>
+    </tr>
+        <tr>
+      <th scope="row">Health</th>
+        <td>{% for health in horse.horse_healthy.all %}
+        {{ health.date }}:  {{ health.care }}<br>
+            {% endfor %}
+        </td>
+                    <td class="col-1">
+        <a href="/stable_schedule/horse/health/{{ horse.id }}">Add</a>
+        </td>
+    </tr>
+          <tr>
+      <th scope="row">Training Schedule</th>
+        <td>{% for training in horse.schedule.all %}
+        {{ training.date }}:  {{ training.place }}<br>
+            {% endfor %}
+        </td>
+                    <td class="col-1">
+        <a href="/stable_schedule/horse/training_schedule/{{ horse.id }}">Add</a>
+        </td>
+    </tr>
+  </tbody>
+    </table>
+    <p><a href="/stable_schedule/horse/list/">Horse list</a></p>
+
+{% endblock %}

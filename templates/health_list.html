@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Welcome {{ user }}!</h1>
+          <h2>Health & Veterinary care:</h2>
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col" class="col-1">Horse name</th>
+      <th scope="col" class="col-1">Date</th>
+        <th scope="col" class="col-1">Care</th>
+    </tr>
+  </thead>
+    <tbody>
+            {%  for horse_health in health %}
+                <tr>
+                    <td class="col-2">
+                {{ horse_health.horse.name }}
+                    </td>
+                <td class="col-2">
+            {{ horse_health.date }}
+                </td>
+                <td class="col-2">
+                {{ horse_health.care}}
+                </td>
+                    <td class="col-1">
+        <a href="/stable_schedule/horse/health/{{ horse_health.id }}/delete/">Delete</a>
+                    </td>
+                    <td class="col-1">
+        <a href="/stable_schedule/horse/health/{{ horse_health.id }}/modify/">Modify</a>
+                    </td>
+                </tr>
+            {% endfor %}
+    </tbody>
+    </table>
+
+<a href="/stable_schedule/horse/list/">Horse list</a>
+
+{% endblock %}

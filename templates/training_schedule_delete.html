@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p> Are you shure you want to delete?</p>
+    <form method="post" class="float-left">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Yes" name="answer">
+        <input type="submit" class="btn btn-primary" value="No" name="answer">
+    </form>
+
+{% endblock %}

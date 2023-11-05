@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Welcome {{ user }}!</h1>
+
+          <h2>Feeding list:</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" class="col-1">Horse name</th>
+      <th scope="col" class="col-1">Time of day</th>
+      <th scope="col" class="col-1">Ingredients</th>
+    </tr>
+  </thead>
+    <tbody>
+            {%  for food in feeding %}
+                <tr>
+                    <td class="col-2">
+                {{ food.horse.name }}
+                    </td>
+                <td class="col-2">
+            {{ food.time_of_day }}
+                </td>
+                <td class="col-2">
+                {{ food.ingredients }}
+                </td>
+                    <td class="col-1">
+        <a href="/stable_schedule/horse/feeding/delete/{{ food.id }}/">Delete</a>
+                    </td>
+                    <td class="col-1">
+        <a href="/stable_schedule/horse/feeding/{{ food.id }}/modify/">Modify</a>
+                    </td>
+                </tr>
+            {% endfor %}
+    </tbody>
+    </table>
+
+<a href="/stable_schedule/horse/list/">Horse list</a>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Welcome {{ user }}!</h1>
+         <form method="post">
+        {% csrf_token %}
+             <p><input class="form-control" type="date" name="date" placeholder="Date"></p>
+             <p><textarea class="form-control" name="care" placeholder="Care" rows="4"></textarea></p>
+             <p><button type="submit" class="btn btn-primary">Add veterinary care</button></p>
+
+    </form>
+{% endblock %}
